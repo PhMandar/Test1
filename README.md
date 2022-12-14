@@ -1,7 +1,8 @@
 # Test1
 Testing first repository
 
-# My first graphql query from github :
+# graphql query from github :
+1. Normal Query :
 
 query getMyProfileInformation {
   viewer {
@@ -35,3 +36,26 @@ fragment userInfo on User {
 }
 
 # ---------------------------------------------------------------------------------------------------
+
+2. Query with parameter :
+
+query getMyProfileInformation($isOwner: Boolean) {
+  viewer {
+    login
+    name
+    starredRepositories(ownedByViewer: $isOwner, first: 5) {
+      nodes {
+        id
+        name
+      }
+    }
+  }
+}
+
+With Query parameter :
+{
+  "isOwner": true
+}
+
+# ---------------------------------------------------------------------------------------------------
+
